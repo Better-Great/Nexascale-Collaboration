@@ -6,20 +6,20 @@
     git clone https://github.com/Better-Great/Nexascale-Collaboration.git
     cd Nexascale-Collaboration
 ### 3. Create a New Branch
-    ```sh
-    git checkout -b feature-update
-    ```
+```sh
+git checkout -b feature-update
+```
 ### 4. Add and Commit Changes
 - Created a README.md file and added a short introduction.
 - Staged and committed the changes.
-    ```sh
-    git add README.md
-    git commit -m "comments"
-    ```
+```sh
+git add README.md
+git commit -m "comments"
+```
 ### 5. Push Branch to Remote Repository
-    ```sh
-    git push origin feature-update
-    ```
+```sh
+git push origin feature-update
+```
 ### 6. Open a Pull Request (PR) on GitHub
 - Navigated to the repository on GitHub.
 - Opened a new pull request from feature-update to main.
@@ -27,10 +27,10 @@
 ### 7. Merge the Pull Request
 - After reviewing, merged the PR into main.
 ### 8.  Pull Latest Changes Locally
-    ```sh
-    git checkout main
-    git pull origin main
-    ```
+```sh
+git checkout main
+git pull origin main
+```
 
 
 # TASK TWO
@@ -89,3 +89,63 @@ https://github.com/mayasimi/nexushubcol/pull/2
     git pull origin main
     ```
 
+# TASK THREE
+## [Nexa-test](https://github.com/Better-Great/Nexa-test)
+This repository demonstrates handling merge conflicts in Git by modifying the same file in different branches and resolving conflicts manually.
+
+## Steps Followed
+### 1. Repository Setup
+- Created a new repository on GitHub: Nexa-test
+    ```sh
+    git clone https://github.com/Better-Great/Nexa-test.git
+    cd Nexa-test
+    ```
+### 2. Created a New Branch and Modified a File
+```sh
+git checkout -b edit-text
+```
+- Created a check-time.sh file and added the script:
+```sh 
+#!/bin/bash
+
+# Set timezone to WAT (West Africa Time)
+export TZ=Africa/Lagos
+
+# Get the current time in WAT
+current_time=$(date +"%H:%M:%S")
+
+# Display the current time
+echo "The current time in WAT is: $current_time"
+```
+- Committed and pushed the changes:
+```sh
+git add check-time.sh
+git commit -m "comments"
+git push origin edit-text
+```
+### 3. Modified the Same File in main
+- Switched back to the main branch:
+```sh
+git checkout main
+```
+- Edited `check-time.sh` differently by adding a working hours check.
+- Committed and pushed the changes:
+```sh
+git add check-time.sh
+git commit -m "Added working hours check to script"
+git push origin main
+```
+### 4. Merging `edit-text` into `main` (Creating Conflict)
+```sh
+git merge edit-text
+```
+- Git detected a merge conflict in check-time.sh.
+### 5. Resolving the Merge Conflict
+- Opened `check-time.sh`, manually merged the conflicting changes, and ensured all intended edits were included.
+- Staged and committed the resolved file:
+```sh
+git add check-time.sh
+git commit -m "Resolved merge conflict in check-time.sh"
+# Push the resolved version
+git push origin main
+```
